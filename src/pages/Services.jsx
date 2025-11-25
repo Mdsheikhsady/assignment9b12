@@ -1,24 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-const PopularSection = () => {
-  const [services, setServices] = useState([]);
+const Services = () => {
+    const [services, setServices] = useState([]);
+    
+      useEffect(() => {
+        fetch("services.json")
+          .then((res) => res.json())
+          .then((data) => setServices(data))
+          .catch((err) => console.log(err));
+      }, []);
 
-  useEffect(() => {
-    fetch("services.json")
-      .then((res) => res.json())
-      .then((data) => setServices(data))
-      .catch((err) => console.log(err));
-  }, []);
-
-  return (
-    <div className="px-20 mt-8">
-      <div >
-        <h3 className="font-bold text-3xl text-center text-primary">Popular Winter Care Services</h3>
-      </div>
-
-      {/* card */}
-      <div className="grid grid-cols-3 gap-10 mt-12">
-        {services.slice(0,6).map((service) => (
+    return (
+        <div className="grid grid-cols-3 gap-10 mt-12 px-25">
+        {services.map((service) => (
           <div className="card bg-base-100 w-96 shadow-sm">
             <figure>
               <img className="w-full h-70 object-cover"
@@ -40,8 +34,7 @@ const PopularSection = () => {
           </div>
         ))}
       </div>
-    </div>
-  );
+    );
 };
 
-export default PopularSection;
+export default Services;
