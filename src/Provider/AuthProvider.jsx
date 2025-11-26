@@ -5,7 +5,7 @@ import auth from "../firebase/firebase.config";
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext();
 
-const googleProvider = new GoogleAuthProvider
+const googleProvider = new GoogleAuthProvider()
 
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -38,6 +38,7 @@ const AuthProvider = ({ children }) => {
     setUser,
     user,
     handleGoogleSignin,
+    loading,
   };
 
   return <AuthContext value={authData}>{children}</AuthContext>;
