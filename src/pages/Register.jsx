@@ -15,6 +15,21 @@ const Register = () => {
     const pass = e.target.password.value;
     const name = e.target.name.value;
     const photoUrl = e.target.PhotoUrl.value;
+    
+    const upperCase = /[A-Z]/;
+    const lowerCase = /[a-z]/;
+
+    if(pass.length <6){
+      return alert('less than 6 character');
+    }
+    if(!upperCase.test(pass)){
+      return alert ('need a upper case')
+    }
+
+    if(!lowerCase.test(pass)){
+      return alert ('need a lower case')
+    }
+    
     registerWithEmailPassword(email,pass)
     .then((userCredential)=>{
       
@@ -78,9 +93,7 @@ const Register = () => {
                 placeholder="Password"
               />
               <button onClick={googleSignup} className="btn"><FcGoogle /> Continue With Google</button>
-              <div>
-                <a className="link link-hover">Forgot password?</a>
-              </div>
+              
               <div>
                 <span>Already have an account?</span>
                 <Link to={"/login"} className="text-blue-500">
