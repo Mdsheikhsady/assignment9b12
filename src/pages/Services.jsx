@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
+import { motion } from "motion/react"
 
 const Services = () => {
     const [services, setServices] = useState([]);
@@ -14,7 +15,10 @@ const Services = () => {
     return (
         <div className="grid grid-cols-3 gap-10 mt-12 px-25">
         {services.map((service) => (
-          <div className="card bg-base-100 w-96 shadow-sm">
+          <motion.div initial={{ scale: 0.8 }} animate={{
+    scale: 1,
+    transition: { duration: 1 }
+  }}  className="card bg-base-100 w-96 shadow-sm">
             <figure>
               <img className="w-full h-70 object-cover"
                 src={service?.image}
@@ -32,7 +36,7 @@ const Services = () => {
                 <Link to= {`/details/${service?.serviceId}`}><button className="btn btn-primary">View Details</button></Link>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     );
