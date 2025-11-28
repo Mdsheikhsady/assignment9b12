@@ -25,7 +25,7 @@ const PopularSection = () => {
           <motion.div initial={{ scale: 0.5 }} animate={{
     scale: 1,
     transition: { duration: 1 }
-  }}  className="card bg-base-100 w-75 shadow-sm">
+  }}  className="card bg-base-100 w-80 shadow-sm">
             <figure>
               <img className="w-full h-70 object-cover"
                 src={service?.image}
