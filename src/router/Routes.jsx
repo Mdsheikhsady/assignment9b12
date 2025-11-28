@@ -40,7 +40,8 @@ const router = createBrowserRouter([
         },
         {
             path: '/details/:myId',
-            element: <ServiceDetails></ServiceDetails>
+            element: <PrivateRouter><ServiceDetails></ServiceDetails></PrivateRouter>
+             
         },
         {
             path: '/forgot/:email',

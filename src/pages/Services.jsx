@@ -13,12 +13,12 @@ const Services = () => {
       }, []);
 
     return (
-        <div className="grid grid-cols-3 gap-10 mt-12 px-25">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 mt-20">
         {services.map((service) => (
           <motion.div initial={{ scale: 0.5 }} animate={{
     scale: 1,
     transition: { duration: 1 }
-  }}  className="card bg-base-100 w-96 shadow-sm">
+  }}  className="card bg-base-100 w-85 shadow-sm">
             <figure>
               <img className="w-full h-70 object-cover"
                 src={service?.image}

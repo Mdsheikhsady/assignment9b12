@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import auth from "../firebase/firebase.config";
 import { signOut } from "firebase/auth";
@@ -36,13 +36,13 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-            <Link to={"/"}>Home</Link>
+            <NavLink to="/" >Home</NavLink>
           </li>
           <li>
-            <Link to={"/services"}>Services</Link>
+            <NavLink to={"/services"}>Services</NavLink>
           </li>
           <li>
-            <Link to ={'/profile'}>My Profile</Link>
+            <NavLink to ={'/profile'}>My Profile</NavLink>
           </li>
           </ul>
         </div>
@@ -51,13 +51,13 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to={"/"}>Home</Link>
+            <NavLink to={"/"}>Home</NavLink>
           </li>
           <li>
-            <Link to={"/services"}>Services</Link>
+            <NavLink to={"/services"}>Services</NavLink>
           </li>
           <li>
-            <Link to ={'/profile'}>My Profile</Link>
+            <NavLink to ={'/profile'}>My Profile</NavLink>
           </li>
         </ul>
       </div>
