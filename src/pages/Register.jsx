@@ -61,7 +61,7 @@ const Register = () => {
       .catch((err) => console.log(err));
   };
 
-  console.log(user);
+  // console.log(user);
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">

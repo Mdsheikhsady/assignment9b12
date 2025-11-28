@@ -12,7 +12,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  console.log(location);
+  // console.log(location);
 
   const handleSubmit = (e) => {
     e.preventDefault();
