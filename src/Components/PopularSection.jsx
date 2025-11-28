@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router';
-import { motion } from "motion/react"
+import { motion } from "framer-motion";
 
 
 const PopularSection = () => {
@@ -14,13 +14,13 @@ const PopularSection = () => {
   }, []);
 
   return (
-    <div className="px-20 mt-8">
+    <div className="lg:px-20 md:px-10 mt-8">
       <div >
         <h3 className="font-bold text-3xl text-center text-primary">Popular Winter Care Services</h3>
       </div>
 
       {/* card */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 mt-20">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:gap-6 mg:gap-3 max-w-6xl mx-auto px-4 mt-20">
         {services.slice(0,6).map((service) => (
           <motion.div initial={{ scale: 0.5 }} animate={{
     scale: 1,
