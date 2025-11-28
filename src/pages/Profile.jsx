@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const { setUser, user } = useContext(AuthContext);
@@ -22,6 +23,7 @@ const Profile = () => {
     })
       .then(() => {
         setUser({...user, photoURL:photoUrl, displayName:name})
+        toast.success('update profile successful')
       })
       .catch((error) => {
         console.log(error);

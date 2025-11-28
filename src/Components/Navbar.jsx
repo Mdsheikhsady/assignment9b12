@@ -36,25 +36,17 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/services"}>Services</Link>
+          </li>
+          <li>
+            <Link to ={'/profile'}>My Profile</Link>
+          </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">PetCare</a>
+        <Link to={'/'} className="btn btn-ghost text-xl">PetCare</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -69,20 +61,29 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      {user && (
-        <div className="navbar-end">
-          <btn onClick={handleSignOut} className="btn">
-            Logout
-          </btn>
+      
+      {user ? (
+  <div className="navbar-end flex items-center gap-3">
+    
+    <div 
+      className="tooltip tooltip-bottom" 
+      data-tip={user.displayName || "User"}
+    >
+      <div className="avatar">
+        <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-1">
+          <img src={user.photoURL} alt="User Avatar" />
         </div>
-      )}
-      {!user && (
-        <div className="navbar-end">
-          <Link to={"/login"} className="btn">
-            Login
-          </Link>
-        </div>
-      )}
+      </div>
+    </div>
+
+ 
+    <button onClick={handleSignOut} className="btn">Logout</button>
+  </div>
+) : (
+  <div className="navbar-end">
+    <Link to="/login" className="btn">Login</Link>
+  </div>
+)}
     </div>
   );
 };

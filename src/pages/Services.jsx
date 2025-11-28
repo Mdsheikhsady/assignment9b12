@@ -15,7 +15,7 @@ const Services = () => {
     return (
         <div className="grid grid-cols-3 gap-10 mt-12 px-25">
         {services.map((service) => (
-          <motion.div initial={{ scale: 0.8 }} animate={{
+          <motion.div initial={{ scale: 0.5 }} animate={{
     scale: 1,
     transition: { duration: 1 }
   }}  className="card bg-base-100 w-96 shadow-sm">
@@ -33,7 +33,7 @@ const Services = () => {
 
               </div>
               <div className="card-actions justify-end">
-                <Link to= {`/details/${service?.serviceId}`}><button className="btn btn-primary">View Details</button></Link>
+                <Link to= {`/service/${service?.serviceId}`}><button className="btn btn-primary">View Details</button></Link>
               </div>
             </div>
           </motion.div>

@@ -4,10 +4,11 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { FcGoogle } from "react-icons/fc";
-
+import { toast } from "react-toastify";
 
 const Register = () => {
-  const { registerWithEmailPassword, setUser, user, handleGoogleSignin } = useContext(AuthContext);
+  const { registerWithEmailPassword, setUser, user, handleGoogleSignin } =
+    useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,46 +16,50 @@ const Register = () => {
     const pass = e.target.password.value;
     const name = e.target.name.value;
     const photoUrl = e.target.PhotoUrl.value;
-    
+
     const upperCase = /[A-Z]/;
     const lowerCase = /[a-z]/;
 
-    if(pass.length <6){
-      return alert('less than 6 character');
+    if (pass.length < 6) {
+      return alert("less than 6 character");
     }
-    if(!upperCase.test(pass)){
-      return alert ('need a upper case')
+    if (!upperCase.test(pass)) {
+      return alert("need a upper case");
     }
 
-    if(!lowerCase.test(pass)){
-      return alert ('need a lower case')
+    if (!lowerCase.test(pass)) {
+      return alert("need a lower case");
     }
-    
-    registerWithEmailPassword(email,pass)
-    .then((userCredential)=>{
-      
-      updateProfile(auth.currentUser, {
-  displayName: name, photoURL: photoUrl
-}).then(() => {
-    setUser(userCredential.user)
-}).catch((error) => {
-    console.log(error);
 
-});
-    })
-    .catch(err=>{
-      console.log(err);
-    })
+    registerWithEmailPassword(email, pass)
+      .then((userCredential) => {
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photoUrl,
+        })
+          .then(() => {
+            setUser(userCredential.user);
+            toast.success('Register successful');
+          })
+          .catch((error) => {
+            console.log(error);
+            toast.error(e.message);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(e.message);
+      });
   };
 
-  const googleSignup = () =>{
-  handleGoogleSignin()
-  .then(result=>{
-    const user = result.user
-    setUser(user)
-  })
-  .catch(err=> console.log(err))
-}
+  const googleSignup = () => {
+    handleGoogleSignin()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+      })
+      .catch((err) => console.log(err));
+  };
 
   console.log(user);
   return (
@@ -92,8 +97,10 @@ const Register = () => {
                 className="input"
                 placeholder="Password"
               />
-              <button onClick={googleSignup} className="btn"><FcGoogle /> Continue With Google</button>
-              
+              <button onClick={googleSignup} className="btn">
+                <FcGoogle /> Continue With Google
+              </button>
+
               <div>
                 <span>Already have an account?</span>
                 <Link to={"/login"} className="text-blue-500">

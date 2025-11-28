@@ -5,6 +5,8 @@ const ServiceDetails = () => {
   const [services, setServices] = useState([]);
   const { myId } = useParams();
 
+  const myIdNumber = Number(myId);
+
   useEffect(() => {
     fetch("/services.json")
       .then(res => res.json())
@@ -12,12 +14,13 @@ const ServiceDetails = () => {
       .catch(err => console.log(err));
   }, []);
 
-    const findResult =services.find(service=> service.serviceId==myId)
+    const findResult =services.find(service=> service.serviceId===myIdNumber)
     console.log(findResult);
 
 
 
   return <div>
+    <h2>{findResult.serviceName}</h2>
   </div>;
 
 };
