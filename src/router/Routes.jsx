@@ -6,9 +6,9 @@ import Login from "../pages/Login";
 import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
-import ServiceDetails from "../pages/ServiceDetails";
 import ForgotPass from "../pages/ForgotPass";
 import Error from "../pages/Error";
+import ServiceDetails from "../pages/ServiceDetails";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             element:<PrivateRouter><Profile></Profile></PrivateRouter>
         },
         {
-            path: '/service/:myId',
+            path: '/details/:myId',
             element: <ServiceDetails></ServiceDetails>
         },
         {
